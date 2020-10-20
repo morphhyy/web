@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Welcome</title>
+    <link rel="stylesheet" type="text/css" href="./hola/style.css">
+    <style>
+        body {
+            min-height: 100vh;
+            background-color: black;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        .circle {
+            margin: 3% auto;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .line {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circleLine {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 4px solid white;
+            border-radius: 50%;
+        }
+
+        .circleBig {
+            height: 80px;
+            width: 80px;
+
+        }
+
+        .circleSmall {
+            height: 20px;
+            width: 20px;
+        }
+
+        .twoQuarterBig {
+            width: 60px;
+            height: 65px;
+            border: 4px solid white;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            border-radius: 50%;
+            animation: spin 3s infinite;
+
+        }
+
+        .twoQuarterSmall {
+            width: 40px;
+            height: 40px;
+            border: 4px solid white;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-radius: 50%;
+            animation: spin 6s infinite;
+
+        }
+
+        .lineSmallLeft {
+            width: 40px;
+            height: 0px;
+            margin-left: 100px;
+            border-bottom: 4px solid white;
+            position: absolute;
+
+
+        }
+
+        .lineSmallRight {
+            width: 40px;
+            height: 0px;
+            margin-right: 100px;
+            border-bottom: 4px solid white;
+            position: absolute;
+        }
+
+        .lineBigUp {
+            width: 4px;
+            height: 210px;
+            margin-top: 120px;
+            border-top: 50px solid white;
+            position: absolute;
+        }
+
+        .lineBigDown {
+            width: 4px;
+            height: 210px;
+            margin-bottom: 120px;
+            border-bottom: 50px solid white;
+            position: absolute;
+        }
+
+        #asd {
+            width: 100%;
+            height: 100%;
+            margin-top: 500px;
+            color: #ffffff;
+            margin-left: 38%;
+            z-index: 100;
+            font-size: 60px;
+            position: fixed;
+            align-self: center;
+        }
+
+        #dsa {
+            z-index: -1;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotateZ(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="showSecond" style="width: 100%;height: 100% ;display: none;">
+        <div class="title">
+            <center>
+                <h1>
+                    <font color="#FF0000"> Welcome... </font>
+                </h1>
+            </center> <br>
+        </div>
+        <div class="cursor"></div>
+        <div class="sparkle"></div>
+        </font>
+        </br></br></br>
+        <center>
+            <img style="opacity: 0.5;" src="hola/mrRobot.png" width=400px hight=200px />
+        </center>
+    </div>
+
+    <h1 id="asd" color="#FFFFFF">  
+        <font color="#FF0000"> Welcome... </font>
+    </h1>
+    <div id="dsa" style="width: 100%; height: 100%; opacity: 0;">
+        <div class="circle">
+            <div class="circleBig circleLine">
+                <div class="twoQuarterBig circleLine">
+                    <div class="lineSmallLeft line"></div>
+                    <div class="lineSmallRight line"></div>
+                    <div class="twoQuarterSmall circleLine">
+                        <div class="lineBigUp line"></div>
+                        <div class="lineBigDown line"></div>
+                        <div class="circleSmall circleLine"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./hola/style.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+                $("#asd").animate({ marginTop: "25px", opacity: 0.5, marginLeft: "44.5%", fontSize: "25px", }, 1500);
+                $("#dsa").animate({ opacity: 1 }, 3000, function () {
+                    $("#asd").hide(500).delay(1000);
+                    $("#dsa").hide(500).delay(1000);
+                    $("#showSecond").show(1000);
+                });
+        });
+    </script>
+</body>
+
+</html>
