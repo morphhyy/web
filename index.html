@@ -128,12 +128,12 @@
     </style>
 </head>
 
-<body>
+<body onload="myFunction()">
     <div id="showSecond" style="width: 100%;height: 100% ;display: none;">
         <div class="title">
             <center>
                 <h1>
-                    <font color="#FF0000"> Welcome... </font>
+                    <span class="runText"><font color="#FF0000"> Welcome... </font></span>
                 </h1>
             </center> <br>
         </div>
@@ -141,41 +141,43 @@
         <div class="sparkle"></div>
         </font>
         </br></br></br>
-        <center>
-            <img style="opacity: 0.5;" src="hola/mrRobot.png" width=400px hight=200px />
-        </center>
     </div>
-
-    <h1 id="asd" color="#FFFFFF">  
-        <font color="#FF0000"> Welcome... </font>
-    </h1>
     <div id="dsa" style="width: 100%; height: 100%; opacity: 0;">
-        <div class="circle">
-            <div class="circleBig circleLine">
-                <div class="twoQuarterBig circleLine">
-                    <div class="lineSmallLeft line"></div>
-                    <div class="lineSmallRight line"></div>
-                    <div class="twoQuarterSmall circleLine">
-                        <div class="lineBigUp line"></div>
-                        <div class="lineBigDown line"></div>
-                        <div class="circleSmall circleLine"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <script type="text/javascript" src="./hola/style.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(function() {
-                $("#asd").animate({ marginTop: "25px", opacity: 0.5, marginLeft: "44.5%", fontSize: "25px", }, 1500);
-                $("#dsa").animate({ opacity: 1 }, 3000, function () {
-                    $("#asd").hide(500).delay(1000);
-                    $("#dsa").hide(500).delay(1000);
+                $("#dsa").animate({ opacity: 1 }, 0, function () {
                     $("#showSecond").show(1000);
                 });
         });
-    </script>
+		
+		let component = document.querySelector(".runText");
+		let text = component.textContent;
+		let someValue = 0
+		component.textContent = "";
+		let isReverse = false
+
+		myFunction = () => {
+			setInterval(() => {
+				if(!isReverse){
+					someValue = someValue+1;
+					component.textContent = text.substring(0,someValue % (text.length+1))
+				}else{
+					someValue = someValue+1;
+					component.textContent = text.substring(0, (text.length -1) - someValue % text.length  )
+				}
+				if(someValue % text.length   == 0){
+					someValue = 0;
+					isReverse = !isReverse;
+					if(!isReverse){
+						component.textContent = "";
+					}
+				}
+			}, 100);
+		}   
+	</script>
 </body>
 
 </html>
